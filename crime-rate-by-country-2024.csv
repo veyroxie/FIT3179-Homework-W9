@@ -1,5 +1,6 @@
 "country","crimeRateByCountry_crimeIndex","CrimeRate_OverallCriminalityScoreGOCI","CrimeRate_CriminalMarketsScore","CrimeRate_CriminalActorsScore","CrimeRate_ResilienceScore","CrimeRateSafetyIndex"
 "India",44.4,5.75,6.7,4.8,5.42,55.6
+"Canada",,3.88,3.87,3.9,7.21,
 "China",60.8,6.37,6.53,6.2,5.67,39.2
 "United States of America",49.2,5.67,5.83,5.5,7.13,50.8
 "Indonesia",45.9,6.85,6.6,7.1,4.25,54.1
