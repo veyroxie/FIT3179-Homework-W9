@@ -8,6 +8,9 @@
 <body>
   <h1>Doing Time</h1>
   <div id="radial-chart"></div> <!-- For Radial Chart -->
+
+  <h2>Heat Map of Violence Against Women Cases</h2>
+  <div id="heatmap-chart"></div> <!-- For Horizontal Heat Map -->
   
   <h2>Crime Rate Index by Country</h2>
   <div id="geo-chart"></div> <!-- For Geographic Chart -->
@@ -57,6 +60,45 @@
           {"field": "State", "type": "nominal"},
           {"field": "Value", "type": "quantitative", "title": "Prisoner Index (per 100,000)"}
         ]
+      }
+    };
+
+    // Heat Map Spec
+    const heatmapSpec = {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "data": {
+        "url": "https://raw.githubusercontent.com/veyroxie/csv/refs/heads/main/violence%20against%20women%20-%20Sheet1.csv",
+        "format": {"type": "csv"}
+      },
+      "mark": "rect",
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+          "axis": {"title": "Year"}
+        },
+        "y": {
+          "field": "Type of Case",
+          "type": "nominal",
+          "axis": {"title": "Type of Case"}
+        },
+        "color": {
+          "field": "Count",
+          "type": "quantitative",
+          "scale": {"scheme": "blues"},
+          "title": "Number of Cases"
+        },
+        "tooltip": [
+          {"field": "Type of Case", "type": "nominal"},
+          {"field": "Year", "type": "ordinal"},
+          {"field": "Count", "type": "quantitative"}
+        ]
+      },
+      "config": {
+        "axis": {
+          "labelFontSize": 12,
+          "titleFontSize": 14
+        }
       }
     };
 
@@ -135,6 +177,8 @@
 
     // Embed the radial chart
     vegaEmbed("#radial-chart", radialSpec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+    // Embed the heat map
+    vegaEmbed("#heatmap-chart", heatmapSpec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
     // Embed the geographic chart
     vegaEmbed("#geo-chart", geoSpec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
   </script>
