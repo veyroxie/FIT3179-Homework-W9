@@ -4,14 +4,29 @@
   <script src="https://cdn.jsdelivr.net/npm/vega@5.30.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.20.1"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.26.0"></script>
+  <style>
+    /* Styles for the chart containers */
+    .chart-container {
+      display: flex;
+      justify-content: space-around; /* Space between charts */
+      align-items: flex-start; /* Align charts to the top */
+      margin-bottom: 20px; /* Space between rows of charts */
+    }
+
+    #radial-chart, #heatmap-chart {
+      width: 45%; /* Set width for each chart */
+      height: 400px; /* Set a fixed height */
+    }
+  </style>
 </head>
 <body>
   <h1>Doing Time</h1>
-  <div id="radial-chart"></div> <!-- For Radial Chart -->
-
-  <h2>Heat Map of Violence Against Women Cases</h2>
-  <div id="heatmap-chart"></div> <!-- For Horizontal Heat Map -->
   
+  <div class="chart-container">
+    <div id="radial-chart"></div> <!-- For Radial Chart -->
+    <div id="heatmap-chart"></div> <!-- For Horizontal Heat Map -->
+  </div>
+
   <h2>Crime Rate Index by Country</h2>
   <div id="geo-chart"></div> <!-- For Geographic Chart -->
   
@@ -53,7 +68,7 @@
         "color": {
           "field": "State",
           "type": "nominal",
-          "scale": {"scheme": "category10"}, // Improved color scheme
+          "scale": {"scheme": "category10"},
           "legend": {"title": "State"}
         },
         "tooltip": [
